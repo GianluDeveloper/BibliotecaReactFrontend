@@ -14,6 +14,7 @@ import Index from "./pages/Index";
 import Dipendenti from "./pages/Dipendenti";
 import Clienti from "./pages/Clienti";
 import Logout from "./pages/Logout";
+import Corsi from "./pages/Corsi";
 const projectPath = "/JavaBibliotecaReact";
 
 function App() {
@@ -69,6 +70,9 @@ function App() {
             </Route>
             <Route path={projectPath + "/users"}>
               <Users />
+            </Route>
+            <Route path={projectPath + "/corsi"}>
+              <Corsi />
             </Route>
             <Route path={projectPath + "/clienti"}>
               <Clienti />
