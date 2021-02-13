@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-interface Cliente {
-  idCliente: number;
-  nome: string;
-  cognome: string;
-  telefono: string;
-}
+import { Cliente } from "../model/Interfaces";
+
 export default class Clienti extends Component {
   state = { clienti: [] };
   async componentDidMount() {

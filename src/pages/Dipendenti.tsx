@@ -7,14 +7,7 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-
-interface Dipendente {
-  matricola: number;
-  nome: string;
-  cognome: string;
-  telefono: string;
-  admin: boolean;
-}
+import { Dipendente } from "../model/Interfaces";
 
 export default class Dipendenti extends Component {
   state = {
