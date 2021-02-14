@@ -96,10 +96,13 @@ aside {
 }
 .azione a {
   text-decoration: none;
+  font-size: 1.2em;
+  color: #2c4563;
 }
 .azione a:hover {
   font-style: italic;
 }
+
 main {
   grid-area: main;
   display: grid;
@@ -112,7 +115,7 @@ main a {
   color: #2c4563;
 }
 
-main a .fa {
+main a .fa-fw {
   color: #4560e6;
 }
 

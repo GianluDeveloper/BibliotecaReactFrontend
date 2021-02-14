@@ -51,17 +51,14 @@ function App() {
             <Route path={projectPath + "/logout"}>
               <Logout cookiestate={setCookieState} />
             </Route>
-            <Route path={projectPath + "/users"}>
-              <Users />
-            </Route>
-            <Route path={projectPath + "/corsi"}>
+            <Route path={projectPath + "/Corsi/all"}>
               <Corsi />
             </Route>
-            <Route path={projectPath + "/clienti"}>
+            <Route path={projectPath + "/Clienti/all"}>
               <Clienti />
             </Route>
-            <Route path={projectPath + "/aside"}>
-              <Aside />
+            <Route path={projectPath + "/Dipendenti/all"}>
+              <Dipendenti />
             </Route>
             <Route path={projectPath}>
               <HomePage homePath={projectPath} />
