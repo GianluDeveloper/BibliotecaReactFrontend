@@ -1,24 +1,28 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 export default function ClientiModule(props: any) {
+  const home = cleanPath(props.home);
   return (
     <div className="oggettoAside">
       <h4>{props.name}</h4>
       <div className="azione">
-        <a href={"#" + props.name} data-link={props.name}>
+        <Link to={home + props.name + "/insert"}>
           Inserisci {props.name.toLowerCase()}
-        </a>
+        </Link>
       </div>
       <div className="azione">
-        <a href={"#" + props.name} data-link={props.name + "Find"}>
+        <Link to={home + props.name + "/find"}>
           Trova {props.name.toLowerCase()}
-        </a>
+        </Link>
       </div>
       <div className="azione">
-        <a href={"#" + props.name} data-link={props.name + "All"}>
+        <Link to={home + props.name + "/all"}>
           Lista {props.name.toLowerCase()}
-        </a>
+        </Link>
       </div>
     </div>
   );
 }
+const cleanPath = (path: string) => {
+  return path[path.length - 1] === "/" ? path : path + "/";
+};

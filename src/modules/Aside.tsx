@@ -8,11 +8,11 @@ export default function Aside(props: any) {
   return (
     <aside style={{ display: displayState }}>
       <h3>Menu Azioni</h3>
-      <ClientiModule name="Clienti" />
-      <ClientiModule name="Dipendenti" />
-      <ClientiModule name="Libri" />
-      <ClientiModule name="RegistroLibri" />
-      <ClientiModule name="Turni" />
+      <ClientiModule name="Clienti" home={homePage} />
+      <ClientiModule name="Dipendenti" home={homePage} />
+      <ClientiModule name="Libri" home={homePage} />
+      <ClientiModule name="RegistroLibri" home={homePage} />
+      <ClientiModule name="Turni" home={homePage} />
     </aside>
   );
 }
