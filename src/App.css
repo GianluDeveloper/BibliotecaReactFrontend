@@ -28,9 +28,9 @@
   column-gap: 1em;
   font-family: "Gidole";
 }
-aside {
+/* aside {
   display: none;
-}
+} */
 aside a:visited {
   color: rgb(0, 0, 255);
 }
@@ -89,6 +89,7 @@ aside {
   padding: 10px;
   border-radius: 10px;
   border: 1px dashed;
+  margin-left: 10px;
 }
 .azione {
   padding: 5px;

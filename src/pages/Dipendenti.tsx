@@ -14,33 +14,36 @@ export default class Dipendenti extends Component {
     title: "",
   };
   async componentDidMount() {
-    const httpResponse = await axios.get(
-      "http://localhost:8080/JavaBiblioteca/api?type=dipendenti"
-    );
-    setTimeout(() => {
-      this.setState({
-        title: httpResponse.data.map((dipendente: Dipendente) => {
-          return (
-            <tr key={dipendente.matricola}>
-              <td>{dipendente.matricola}</td>
-              <td>{dipendente.nome}</td>
-              <td>{dipendente.cognome}</td>
-              <td>{dipendente.telefono}</td>
-              <td>{dipendente.admin ? "sì" : "no"}</td>
-              <td>
-                <Link to="edit">
-                  <FontAwesomeIcon icon={faEdit} className="fa" fixedWidth />
-                </Link>
-              </td>
-              <td>
-                <Link to="trash">
-                  <FontAwesomeIcon icon={faTrash} className="fa" fixedWidth />
-                </Link>
-              </td>
-            </tr>
-          );
-        }),
+    const httpResponse = await axios
+      .get("http://localhost:8080/JavaBiblioteca/api?type=dipendenti")
+      .catch((err) => {
+        console.log(err);
       });
+    setTimeout(() => {
+      if (httpResponse !== undefined)
+        this.setState({
+          title: httpResponse.data.map((dipendente: Dipendente) => {
+            return (
+              <tr key={dipendente.matricola}>
+                <td>{dipendente.matricola}</td>
+                <td>{dipendente.nome}</td>
+                <td>{dipendente.cognome}</td>
+                <td>{dipendente.telefono}</td>
+                <td>{dipendente.admin ? "sì" : "no"}</td>
+                <td>
+                  <Link to="edit">
+                    <FontAwesomeIcon icon={faEdit} className="fa" fixedWidth />
+                  </Link>
+                </td>
+                <td>
+                  <Link to="trash">
+                    <FontAwesomeIcon icon={faTrash} className="fa" fixedWidth />
+                  </Link>
+                </td>
+              </tr>
+            );
+          }),
+        });
     }, 500);
   }
 

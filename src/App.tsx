@@ -15,6 +15,8 @@ import Dipendenti from "./pages/Dipendenti";
 import Clienti from "./pages/Clienti";
 import Logout from "./pages/Logout";
 import Corsi from "./pages/Corsi";
+import Aside from "./modules/Aside";
+import HomePage from "./modules/Home";
 const projectPath = "/JavaBibliotecaReact";
 
 function App() {
@@ -43,26 +45,7 @@ function App() {
             </Link>
           </nav>
         </header>
-        <aside>
-          <div className="oggettoAside">
-            <h4>Corsi</h4>
-            <div className="azione">
-              <a href="#a" data-link="CorsiAll">
-                Lista Corsi
-              </a>
-            </div>
-            <div className="azione">
-              <a href="#b" data-link="DocentiAll">
-                Lista Docenti
-              </a>
-            </div>
-            <div className="azione">
-              <a href="#b" data-link="IscrizioniAll">
-                Lista Iscrizioni
-              </a>
-            </div>
-          </div>
-        </aside>
+        <Route path={projectPath} component={Aside} />
         <main>
           <Switch>
             <Route path={projectPath + "/logout"}>
@@ -77,8 +60,11 @@ function App() {
             <Route path={projectPath + "/clienti"}>
               <Clienti />
             </Route>
+            <Route path={projectPath + "/aside"}>
+              <Aside />
+            </Route>
             <Route path={projectPath}>
-              <Dipendenti />
+              <HomePage homePath={projectPath} />
             </Route>
             <Route path="/">
               <Index />
