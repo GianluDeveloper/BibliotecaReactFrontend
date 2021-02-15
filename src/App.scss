@@ -1,3 +1,5 @@
+$cookieLink:rgb(93, 129, 230);
+
 @font-face {
   font-family: "Gidole";
   src: url("./fonts/Gidole-Regular.ttf");
@@ -14,6 +16,19 @@
     color: #e9e8e8;
     font-size: 1em;
     text-align: center;
+}
+.cookies a:visited{
+  color: $cookieLink;
+}
+.cookies a{
+  color:$cookieLink;
+}
+.cookies .fa-fw{
+  font-size:1.1em;
+}
+.cookies .fa-fw:hover{
+  cursor: pointer;
+  color:red;
 }
 
 .container {
@@ -70,12 +85,16 @@ header > nav > a:hover {
   color: blue;
 }
 
-header > nav:nth-child(3) {
+/* header > nav:nth-child(3) {
   margin-left: 0px;
+} */
+header > nav:not(:first-child){
+  margin:0;
 }
 
 header > nav:nth-child(1) {
   letter-spacing: 2px;
+  margin-right: 2em;
 }
 header > nav > a {
   text-decoration: none;
@@ -242,12 +261,12 @@ input[type="radio"] {
   header > * {
     margin-left: 0px;
   }
-  header > nav:first-child {
+  /* header > nav:first-child {
     margin-right: 0px;
   }
   header > nav:nth-child(2) {
     margin-left: 0px;
-  }
+  } */
   main {
     margin-top: 20px;
     grid-area: main;

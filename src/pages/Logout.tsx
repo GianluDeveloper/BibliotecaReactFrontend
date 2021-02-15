@@ -11,6 +11,10 @@ export default class Logout extends Component<LogoutProps> {
     console.log("Cookie deleted");
     const test = this.props;
     test.cookiestate(true);
-    return <div>Logged out</div>;
+    return (
+      <div>
+        <h2>Logged out</h2>
+      </div>
+    );
   }
 }

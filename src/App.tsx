@@ -1,22 +1,19 @@
-import "./App.css";
+import "./App.scss";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import myCookiePolicy, { getCookie } from "./modules/Cookie";
-import {
-  faSignInAlt,
-  faHome,
-  faBook,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import Index from "./pages/Index";
+import NavBar from "./modules/NavBar";
 import Dipendenti from "./pages/Dipendenti";
 import Clienti from "./pages/Clienti";
 import Logout from "./pages/Logout";
 import Corsi from "./pages/Corsi";
 import Aside from "./modules/Aside";
 import HomePage from "./modules/Home";
+
 const projectPath = "/JavaBibliotecaReact";
 
 function App() {
@@ -24,27 +21,7 @@ function App() {
   return (
     <Router>
       <div className="container" id="container">
-        <header>
-          <nav aria-label="Gestionale Biblioteca">
-            <Link to={projectPath}>
-              <FontAwesomeIcon icon={faBook} />
-              &nbsp;Gestionale Biblioteca
-            </Link>
-          </nav>
-          <nav aria-label="Home" data-link="Home">
-            <Link to={projectPath}>
-              <FontAwesomeIcon icon={faHome} />
-              &nbsp;Home
-            </Link>
-          </nav>
-          <nav aria-label="Logout">
-            {/* <a href="#" onclick="return notImplemented()"> */}
-            <Link to={projectPath + "/logout"}>
-              <FontAwesomeIcon icon={faSignInAlt} />
-              &nbsp;Logout
-            </Link>
-          </nav>
-        </header>
+        <NavBar projectPath={projectPath} />
         <Route path={projectPath} component={Aside} />
         <main>
           <Switch>
