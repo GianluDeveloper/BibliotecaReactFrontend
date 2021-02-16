@@ -13,6 +13,8 @@ import Logout from "./pages/Logout";
 import Corsi from "./pages/Corsi";
 import Aside from "./modules/Aside";
 import HomePage from "./modules/Home";
+import InsertClienti from "./modules/Clienti/Insert";
+import UpdateClienti from "./modules/Clienti/Update";
 
 const projectPath = "/JavaBibliotecaReact";
 
@@ -30,6 +32,12 @@ function App() {
             </Route>
             <Route path={projectPath + "/Corsi/all"}>
               <Corsi />
+            </Route>
+            <Route path={projectPath + "/Clienti/insert"}>
+              <InsertClienti />
+            </Route>
+            <Route path={projectPath + "/Clienti/update"}>
+              <UpdateClienti />
             </Route>
             <Route path={projectPath + "/Clienti/all"}>
               <Clienti />
