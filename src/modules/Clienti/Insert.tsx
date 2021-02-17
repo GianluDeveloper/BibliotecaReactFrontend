@@ -3,31 +3,38 @@ import React, { useState } from "react";
 export default function Insert() {
   const [formState, setFormState] = useState(false);
   const [message, setMessage] = useState("Invio dati al server...");
+  const [nome, setNome] = useState("");
+  const [cognome, setCognome] = useState("");
+  const [telefono, setTelefono] = useState("");
+
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const formHandler = (e: any) => {
     e.preventDefault();
-
-    fetch(`http://localhost:8080/JavaBiblioteca/publicapi/Corsi/insert`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nome: "provastatica",
-        cognome: "provaCognome",
-        telefono: "1234567890",
-      }),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        setMessage("Operazione effettuata con successo");
+    setButtonDisabled(true);
+    setTimeout(() => {
+      fetch(`http://localhost:8080/JavaBiblioteca/publicapi/Corsi/insert`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome: nome,
+          cognome: cognome,
+          telefono: telefono,
+        }),
       })
-      .catch((response) => {
-        setTimeout(() => {
-          setMessage("Errore generico");
-        }, 1000);
-      });
-    setFormState(true);
+        .then((response) => response.json())
+        .then((response) => {
+          setMessage("Operazione effettuata con successo");
+        })
+        .catch((response) => {
+          setTimeout(() => {
+            setMessage("Errore generico");
+          }, 1000);
+        });
+      setFormState(true);
+    }, 500);
   };
 
   return formState ? (
@@ -47,6 +54,10 @@ export default function Insert() {
             type="text"
             name="nome"
             placeholder="Nome utente..."
+            value={nome}
+            onChange={(e) => {
+              setNome(e.target.value);
+            }}
             required
           />
           <br />
@@ -58,6 +69,10 @@ export default function Insert() {
             type="text"
             name="cognome"
             placeholder="Cognome utente..."
+            value={cognome}
+            onChange={(e) => {
+              setCognome(e.target.value);
+            }}
             required
           />
           <br />
@@ -70,12 +85,18 @@ export default function Insert() {
             name="telefono"
             placeholder="Telefono utente..."
             pattern="[0-9]{8,11}"
+            value={telefono}
+            onChange={(e) => {
+              setTelefono(e.target.value);
+            }}
             required
           />
           <br />
 
           <br />
-          <button type="submit">Invia dati</button>
+          <button type="submit" disabled={buttonDisabled}>
+            Invia dati
+          </button>
           <input type="hidden" name="azione" value="insert" />
         </form>
       </div>

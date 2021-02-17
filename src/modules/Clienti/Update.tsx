@@ -9,34 +9,40 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Cliente } from "../../model/Interfaces";
 
 export default function Update(props: any) {
+  const [nome, setNome] = useState("");
+  const [cognome, setCognome] = useState("");
+  const [telefono, setTelefono] = useState("");
+
   const [formState, setFormState] = useState(false);
   const [message, setMessage] = useState(`In comunicazione con il server...`);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const formHandler = (e: any) => {
     e.preventDefault();
     setButtonDisabled(true);
+    // console.log("ok");
     fetch(`http://localhost:8080/JavaBiblioteca/publicapi/Corsi/update`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        idCliente: 6,
-        nome: "modificastatica",
-        cognome: "provaCognome",
-        telefono: "1234567890",
+        idCliente: window.location.href.split("id=")[1],
+        nome: nome,
+        cognome: cognome,
+        telefono: telefono,
       }),
     })
       .then((response) => response.json())
       .then((response) => {
         setMessage("Operazione effettuata con successo");
+        setFormState(true);
+        setState(true);
       })
       .catch((response) => {
-        setTimeout(() => {
-          setMessage("Errore generico");
-        }, 1000);
+        setMessage("Errore generico");
+        setFormState(true);
+        setState(true);
       });
-    setFormState(true);
   };
 
   const [state, setState] = React.useState(true);
@@ -51,6 +57,9 @@ export default function Update(props: any) {
       .then((response) => {
         setTimeout(() => {
           setCliente(response);
+          setNome(response.nome);
+          setTelefono(response.telefono);
+          setCognome(response.cognome);
           setState(false);
           setErrorMessage("");
         }, 500);
@@ -77,7 +86,10 @@ export default function Update(props: any) {
             type="text"
             name="nome"
             placeholder="Nome utente..."
-            value={c.nome}
+            value={nome}
+            onChange={(e) => {
+              setNome(e.target.value);
+            }}
             required
           />
           <br />
@@ -89,7 +101,10 @@ export default function Update(props: any) {
             type="text"
             name="cognome"
             placeholder="Cognome utente..."
-            value={c.cognome}
+            value={cognome}
+            onChange={(e) => {
+              setCognome(e.target.value);
+            }}
             required
           />
           <br />
@@ -102,7 +117,10 @@ export default function Update(props: any) {
             name="telefono"
             placeholder="Telefono utente..."
             pattern="[0-9]{8,11}"
-            value={c.telefono}
+            value={telefono}
+            onChange={(e) => {
+              setTelefono(e.target.value);
+            }}
             required
           />
           <br />
