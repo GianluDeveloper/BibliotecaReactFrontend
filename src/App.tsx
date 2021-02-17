@@ -16,6 +16,7 @@ import HomePage from "./modules/Home";
 import InsertClienti from "./modules/Clienti/Insert";
 import UpdateClienti from "./modules/Clienti/Update";
 import RemoveClienti from "./modules/Clienti/Remove";
+import Search from "./modules/Clienti/Search";
 
 const projectPath = "/JavaBibliotecaReact";
 
@@ -36,6 +37,9 @@ function App() {
             </Route>
             <Route path={projectPath + "/Clienti/insert"}>
               <InsertClienti />
+            </Route>
+            <Route path={projectPath + "/Clienti/find"}>
+              <Search />
             </Route>
             <Route path={projectPath + "/Clienti/update"}>
               <UpdateClienti />
