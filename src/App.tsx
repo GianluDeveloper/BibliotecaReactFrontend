@@ -15,6 +15,7 @@ import Aside from "./modules/Aside";
 import HomePage from "./modules/Home";
 import InsertClienti from "./modules/Clienti/Insert";
 import UpdateClienti from "./modules/Clienti/Update";
+import RemoveClienti from "./modules/Clienti/Remove";
 
 const projectPath = "/JavaBibliotecaReact";
 
@@ -38,6 +39,9 @@ function App() {
             </Route>
             <Route path={projectPath + "/Clienti/update"}>
               <UpdateClienti />
+            </Route>
+            <Route path={projectPath + "/Clienti/remove"}>
+              <RemoveClienti />
             </Route>
             <Route path={projectPath + "/Clienti/all"}>
               <Clienti />

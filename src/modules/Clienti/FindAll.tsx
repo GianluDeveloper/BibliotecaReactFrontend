@@ -14,7 +14,7 @@ export default function FindAll(props: any) {
   const [triggerUpdate, setTriggerUpdate] = useState(false);
   let url: string = "";
   const handleRemove = (e: any) => {
-    e.preventDefault();
+    //e.preventDefault();
     doRemove();
   };
   const doRemove = () => {
@@ -76,7 +76,7 @@ export default function FindAll(props: any) {
                   <td>{c.cognome}</td>
                   <td>{c.telefono}</td>
                   <td>
-                    <Link to="update">
+                    <Link to={"update?id=" + c.idCliente}>
                       <FontAwesomeIcon
                         icon={faEdit}
                         className="fa"
@@ -85,8 +85,8 @@ export default function FindAll(props: any) {
                     </Link>
                   </td>
                   <td>
-                    <a
-                      href={"#Clienti/remove?id=" + c.idCliente}
+                    <Link
+                      to={"remove?id=" + c.idCliente}
                       onClick={handleRemove}
                     >
                       <FontAwesomeIcon
@@ -94,7 +94,7 @@ export default function FindAll(props: any) {
                         className="fa"
                         fixedWidth
                       />
-                    </a>
+                    </Link>
                   </td>
                 </tr>
               );
