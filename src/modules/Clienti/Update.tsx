@@ -15,16 +15,25 @@ export default function Update(props: any) {
   const formHandler = (e: any) => {
     e.preventDefault();
     setButtonDisabled(true);
-    fetch("test.json")
+    fetch(`http://localhost:8080/JavaBiblioteca/publicapi/Corsi/update`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idCliente: 6,
+        nome: "modificastatica",
+        cognome: "provaCognome",
+        telefono: "1234567890",
+      }),
+    })
       .then((response) => response.json())
       .then((response) => {
         setMessage("Operazione effettuata con successo");
-        setState(true);
       })
       .catch((response) => {
         setTimeout(() => {
           setMessage("Errore generico");
-          setState(true);
         }, 1000);
       });
     setFormState(true);
@@ -34,11 +43,14 @@ export default function Update(props: any) {
   const [c, setCliente] = React.useState<Cliente | any>(undefined);
   const [errorMessage, setErrorMessage] = React.useState("");
   React.useEffect(() => {
-    fetch("http://localhost:8080/JavaBiblioteca/publicapi/Corsi/findAll")
+    fetch(
+      "http://localhost:8080/JavaBiblioteca/publicapi/Corsi/findById?id=" +
+        window.location.href.split("id=")[1]
+    )
       .then((response) => response.json())
       .then((response) => {
         setTimeout(() => {
-          setCliente(response[0]);
+          setCliente(response);
           setState(false);
           setErrorMessage("");
         }, 500);

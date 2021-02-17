@@ -6,7 +6,18 @@ export default function Insert() {
 
   const formHandler = (e: any) => {
     e.preventDefault();
-    fetch("test.json")
+
+    fetch(`http://localhost:8080/JavaBiblioteca/publicapi/Corsi/insert`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nome: "provastatica",
+        cognome: "provaCognome",
+        telefono: "1234567890",
+      }),
+    })
       .then((response) => response.json())
       .then((response) => {
         setMessage("Operazione effettuata con successo");

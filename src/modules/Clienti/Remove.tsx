@@ -4,11 +4,19 @@ export default class Remove extends Component {
   state = { loading: true, message: "" };
 
   async doRemove() {
-    setInterval(() => {
-      this.setState({ loading: false, message: "Rimosso con successo" });
-    }, 500);
-    const resp = await fetch(window.location.href);
-    const json = await resp.json();
+    const id: string = getId(window.location.href);
+    const response = await fetch(
+      `http://localhost:8080/JavaBiblioteca/publicapi/Corsi/remove?id=${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const jsonResponse = await response.json();
+
+    this.setState({ loading: false, message: jsonResponse.description });
   }
   componentDidMount() {
     this.doRemove();
@@ -23,3 +31,8 @@ export default class Remove extends Component {
     );
   }
 }
+
+const getId = (location: string) => {
+  const id: string = location.split("id=")[1];
+  return id;
+};
